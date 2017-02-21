@@ -1,0 +1,23 @@
+@-webkit-keyframes linkcolor {
+  0% { color: rebeccapurple; }
+  50% { color: peru; }
+  100% { color: rebeccapurple; }
+}
+
+@keyframes linkcolor {
+  0% { color: rebeccapurple; }
+  50% { color: peru; }
+  100% { color: rebeccapurple; }
+}
+
+a {
+  text-decoration: none;
+  color: rebeccapurple;
+}
+
+a:hover {
+  -webkit-animation-name: linkcolor;
+          animation-name: linkcolor;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}

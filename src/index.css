@@ -1,0 +1,15 @@
+@keyframes linkcolor {
+  0% { color: rebeccapurple; }
+  50% { color: peru; }
+  100% { color: rebeccapurple; }
+}
+
+a {
+  text-decoration: none;
+  color: rebeccapurple;
+}
+
+a:hover {
+  animation-name: linkcolor;
+  animation-duration: 1s;
+}
