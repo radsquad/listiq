@@ -1,12 +1,26 @@
 {
   "private": true,
   "scripts": {
-    "build": "webpack -p",
-    "build:dev": "webpack",
+    "prebuild": "rimraf public",
+    "build": "webpack --env.production -p",
+    "postbuild": "cp index.html public",
+    "prebuild:dev": "rimraf public",
+    "build:dev": "webpack --env.development",
+    "postbuild:dev": "cp index.html public",
     "dev": "webpack-dev-server",
     "lint": "eslint .",
-    "test": "jest --coverage"
+    "lint-staged": "lint-staged",
+    "start": "http-server public",
+    "test": "jest --coverage",
+    "test:watch": "npm run test -- --watch",
+    "validate": "npm-run-all --parallel lint build test"
   },
+  "lint-staged": {
+    "*.js": "eslint"
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -33,11 +47,16 @@
     "eslint-plugin-react": "^6.10.0",
     "eslint-plugin-standard": "^2.0.1",
     "extract-text-webpack-plugin": "beta",
+    "http-server": "^0.9.0",
     "jest": "^19.0.0",
+    "lint-staged": "^3.3.1",
+    "npm-run-all": "^4.0.2",
     "postcss-loader": "^1.3.1",
     "postcss-modules": "^0.6.4",
+    "pre-commit": "^1.2.2",
     "precss": "^1.4.0",
     "react-addons-test-utils": "^15.4.2",
+    "rimraf": "^2.6.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
   }
