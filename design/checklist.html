@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="checklist.css" />
+</head>
+<body>
+  <header role="header">
+    <img class="logo" src="listiq.svg" />
+    <span class="slogan">checklists at their simplest</span>
+  </header>
+  <main role="main">
+    <div class="title">
+      <h1>Checklist Title</h1>
+      <span class="small muted">click to edit</span>
+    </div>
+    <div class="toolbar">
+      <span class="small"><a href="#">share this checklist</a></span>
+    </div>
+    <ul class="items">
+      <li class="item">
+        <input type="checkbox" />
+        <span class="title">Item One</span>
+      </li>
+      <li class="item">
+        <input type="checkbox" />
+        <span class="title">Item Two</span>
+      </li>
+      <li class="item done">
+        <input type="checkbox" checked />
+        <span class="title">Item Three</span>
+      </li>
+    </ul>
+    <form>
+      <input type="text" aria-label="new item title" placeholder="item title" />
+      <button type="submit">Add item</button>
+    </form>
+  </main>
+  <footer role="footer">
+    <a href="https://github.com/radsquad">
+      <img class="logo" src="radsquad.svg" />
+    </a>
+  </footer>
+</body>
+</html>
