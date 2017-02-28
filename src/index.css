@@ -1,15 +1,46 @@
-@keyframes linkcolor {
-  0% { color: rebeccapurple; }
-  50% { color: peru; }
-  100% { color: rebeccapurple; }
+@import "partials/colors";
+
+.form-wrapper {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-a {
-  text-decoration: none;
-  color: rebeccapurple;
+.title-input {
+  background: inherit;
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 5px 7px;
+  font-size: 7vw;
+  width: 80%;
+  color: #000;
+  text-align: center;
+  &:focus {
+    outline: none;
+  }
 }
 
-a:hover {
-  animation-name: linkcolor;
-  animation-duration: 1s;
+.create-checklist {
+  border: 1px solid $lightgrey;
+  border-radius: 3px;
+  color: #000;
+  background-color: inherit;
+  padding: 3px 5px;
+  margin-top: 12px;
+  font-size: 5vw;
+  cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  .title-input {
+    font-size: 42px;
+    width: 480px;
+  }
+
+  .create-checklist {
+    font-size: 30px;
+  }
 }

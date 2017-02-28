@@ -5,29 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="dist/styles.css" />
 </head>
 <body>
   <header role="header">
-    <img class="logo" src="listiq.svg" />
-    <span class="slogan">checklists at their simplest</span>
+    <img class="logo" src="listiq.svg" alt="listiq logo" />
+    <span class="slogan" aria-label="slogan">checklists at their simplest</span>
   </header>
-  <main role="main">
+  <main role="main" class="form-wrapper">
     <form action="checklist.html" method="get">
-      <div><input type="text" aria-label="checklist title" placeholder="name your checklist" autofocus /></div>
+      <div><input class="title-input" type="text" aria-label="checklist title" placeholder="name your checklist" autofocus /></div>
       <button type="submit" class="create-checklist">Create</button>
     </form>
   </main>
   <footer role="footer">
     <a href="https://github.com/radsquad">
-      <img class="logo" src="radsquad.svg" />
+      <img class="logo" src="radsquad.svg" alt="radsquad logo" />
     </a>
   </footer>
 </body>
 </html>
-
-<!-- Main page:
-1. Logo
-2. Description (simple and accessible checklists with no registration)
-3. Checklist creation form
-4. Link to radsquad-->

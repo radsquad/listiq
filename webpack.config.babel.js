@@ -7,7 +7,7 @@ export default function (env = 'development') {
     entry: './',
     output: {
       filename: 'bundle.js',
-      path: resolve('public'),
+      path: resolve('public/dist/'),
       publicPath: '/public/'
     },
     module: {

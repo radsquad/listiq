@@ -1,22 +1,25 @@
 {
   "private": true,
   "scripts": {
-    "prebuild": "rimraf public",
+    "prebuild": "rimraf public/dist",
     "build": "webpack --env.production -p",
-    "postbuild": "cp index.html public",
-    "prebuild:dev": "rimraf public",
+    "postbuild": "cp src/index.html public && cp src/checklist.html public",
+    "prebuild:dev": "rimraf public/dist",
     "build:dev": "webpack --env.development",
-    "postbuild:dev": "cp index.html public",
+    "postbuild:dev": "cp src/index.html public && cp src/checklist.html public",
     "dev": "webpack-dev-server",
-    "lint": "eslint .",
+    "lint": "eslint . && stylelint **/*.css",
     "lint-staged": "lint-staged",
+    "spellcheck": "yaspeller *.md",
     "start": "http-server public",
     "test": "jest --coverage",
     "test:watch": "npm run test -- --watch",
     "validate": "npm-run-all --parallel lint build test"
   },
   "lint-staged": {
-    "*.js": "eslint"
+    "*.js": "eslint",
+    "*.css": "stylelint",
+    "*.md": "yaspeller"
   },
   "pre-commit": [
     "lint-staged"
@@ -57,7 +60,10 @@
     "precss": "^1.4.0",
     "react-addons-test-utils": "^15.4.2",
     "rimraf": "^2.6.0",
+    "stylelint": "^7.9.0",
+    "stylelint-config-standard": "^16.0.0",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.1"
+    "webpack-dev-server": "^2.4.1",
+    "yaspeller": "^3.0.0"
   }
 }
