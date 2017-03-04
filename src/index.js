@@ -1,3 +1,5 @@
 import './common.css'
 import './index.css'
 import './checklist.css'
+import '../public/listiq.svg'
+import '../public/radsquad.svg'

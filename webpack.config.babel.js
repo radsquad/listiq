@@ -1,14 +1,14 @@
 import { resolve } from 'path'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
-export default function (env = 'development') {
+export default function (env = {}) {
   var config = {
     context: resolve('src'),
     entry: './',
     output: {
       filename: 'bundle.js',
-      path: resolve('public/dist/'),
-      publicPath: '/public/'
+      path: resolve('dist')
     },
     module: {
       loaders: [
@@ -25,11 +25,23 @@ export default function (env = 'development') {
               'postcss-loader'
             ]
           })
+        },
+        {
+          test: /\.svg$/,
+          use: ['file-loader']
+        },
+        {
+          test: /\.html$/,
+          use: ['html-loader']
         }
       ]
     },
     plugins: [
-      new ExtractTextPlugin('styles.css')
+      new ExtractTextPlugin('styles.css'),
+      new HtmlWebpackPlugin({
+        template: '../public/index.html',
+        inject: true
+      })
     ]
   }
 
