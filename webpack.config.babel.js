@@ -42,7 +42,11 @@ export default function (env = {}) {
         template: '../public/index.html',
         inject: true
       })
-    ]
+    ],
+    devServer: {
+      historyApiFallback: true,
+      contentBase: './'
+    }
   }
 
   config.devtool = env.production ? 'source-map' : 'eval'

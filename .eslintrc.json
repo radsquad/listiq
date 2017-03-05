@@ -2,5 +2,8 @@
   "extends": ["standard", "standard-react"],
   "env": {
     "jest": true
+  },
+  "rules" : {
+    "object-curly-spacing": ["error", "always"]
   }
 }
