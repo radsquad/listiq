@@ -1,48 +1,69 @@
 import React from 'react'
+import { ChecklistHeader,
+         ChecklistTitle,
+         ChecklistToolbar,
+         ChecklistItems,
+         ChecklistAddItemForm,
+         ChecklistFooter } from './'
+import { addArrayItem } from '../helpers/helpers'
 
 export class Checklist extends React.Component {
+
+  constructor () {
+    super()
+
+    this.state = {
+      items: [
+        { name: 'Item One', isCompleted: false },
+        { name: 'Item Two', isCompleted: false },
+        { name: 'Item Three', isCompleted: true }
+      ],
+      newItem: ''
+    }
+
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleInputChange (e) {
+    this.setState({
+      newItem: e.target.value
+    })
+  }
+
+  handleSubmit (e) {
+    e.preventDefault()
+    const newItem = { name: this.state.newItem, isCompleted: false }
+    if (!this.state.newItem) return
+    this.setState({
+      items: addArrayItem(newItem, this.state.items),
+      newItem: ''
+    })
+  }
+
   render () {
     return (
       <div className='app'>
 
-        <header role='header'>
-          <img className='logo' src='../../public/listiq.svg' alt='listiq logo' />
-          <span className='slogan' aria-label='slogan'>checklists at their simplest</span>
-        </header>
+        <ChecklistHeader />
 
         <main role='main' className='checklist-wrapper'>
-          <div className='title'>
-            <h1>Checklist Title</h1>
-            <span className='small muted'>click to edit</span>
-          </div>
-          <div className='toolbar'>
-            <span className='small'><a href='#'>share this checklist</a></span>
-          </div>
-          <ul className='items'>
-            <li className='item'>
-              <input type='checkbox' />
-              <span className='title'>Item One</span>
-            </li>
-            <li className='item'>
-              <input type='checkbox' />
-              <span className='title'>Item Two</span>
-            </li>
-            <li className='item done'>
-              <input type='checkbox' defaultChecked='checked' />
-              <span className='title'>Item Three</span>
-            </li>
-          </ul>
-          <form>
-            <input className='item-title-input' type='text' aria-label='new item title' placeholder='item title' />
-            <button className='add-item' type='submit'>Add item</button>
-          </form>
+
+          <ChecklistTitle />
+
+          <ChecklistToolbar />
+
+          <ChecklistItems items={this.state.items} />
+
+          <ChecklistAddItemForm
+            newItem={this.state.newItem}
+            handleInputChange={this.handleInputChange}
+            handleSubmit={this.handleSubmit}
+          />
+
         </main>
 
-        <footer role='footer'>
-          <a href='https://github.com/radsquad'>
-            <img className='logo' src='../../public/radsquad.svg' alt='radsquad logo' />
-          </a>
-        </footer>
+        <ChecklistFooter />
 
       </div>
     )

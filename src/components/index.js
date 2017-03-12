@@ -1,2 +1,8 @@
 export { Checklist } from './Checklist'
 export { NewChecklistForm } from './NewChecklistForm'
+export { ChecklistHeader } from './ChecklistHeader'
+export { ChecklistTitle } from './ChecklistTitle'
+export { ChecklistToolbar } from './ChecklistToolbar'
+export { ChecklistItems } from './ChecklistItems'
+export { ChecklistAddItemForm } from './ChecklistAddItemForm'
+export { ChecklistFooter } from './ChecklistFooter'
