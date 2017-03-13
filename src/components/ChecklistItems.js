@@ -1,6 +1,5 @@
 import React from 'react'
 import ChecklistItem from './ChecklistItem'
-import { generateId } from '../helpers/helpers'
 
 export const ChecklistItems = (props) => {
   return (
@@ -9,7 +8,7 @@ export const ChecklistItems = (props) => {
         return <ChecklistItem
           name={item.name}
           isCompleted={item.isCompleted}
-          key={generateId()}
+          key={item.id}
         />
       })}
     </ul>

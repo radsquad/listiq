@@ -2,14 +2,14 @@ import { addArrayItem } from './helpers'
 
 test('addArrayItem should add the passed item to the array', () => {
   const startArray = [
-    { name: 'one', isComplete: false },
-    { name: 'two', isComplete: false }
+    { id: 1, name: 'one', isComplete: false },
+    { id: 2, name: 'two', isComplete: false }
   ]
-  const newItem = { name: 'three', isComplete: false }
+  const newItem = { id: 3, name: 'three', isComplete: false }
   const expected = [
-    { name: 'one', isComplete: false },
-    { name: 'two', isComplete: false },
-    { name: 'three', isComplete: false }
+    { id: 1, name: 'one', isComplete: false },
+    { id: 2, name: 'two', isComplete: false },
+    { id: 3, name: 'three', isComplete: false }
   ]
 
   const result = addArrayItem(newItem, startArray)
@@ -19,10 +19,10 @@ test('addArrayItem should add the passed item to the array', () => {
 
 test('addArrayItem should not mutate the existing array', () => {
   const startArray = [
-    { name: 'one', isComplete: false },
-    { name: 'two', isComplete: false }
+    { id: 1, name: 'one', isComplete: false },
+    { id: 2, name: 'two', isComplete: false }
   ]
-  const newItem = { name: 'three', isComplete: false }
+  const newItem = { id: 3, name: 'three', isComplete: false }
 
   const result = addArrayItem(newItem, startArray)
 

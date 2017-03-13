@@ -5,7 +5,7 @@ import { ChecklistHeader,
          ChecklistItems,
          ChecklistAddItemForm,
          ChecklistFooter } from './'
-import { addArrayItem } from '../helpers/helpers'
+import { addArrayItem, generateId } from '../helpers/helpers'
 
 export class Checklist extends React.Component {
 
@@ -14,9 +14,9 @@ export class Checklist extends React.Component {
 
     this.state = {
       items: [
-        { name: 'Item One', isCompleted: false },
-        { name: 'Item Two', isCompleted: false },
-        { name: 'Item Three', isCompleted: true }
+        { id: 1, name: 'Item One', isCompleted: false },
+        { id: 2, name: 'Item Two', isCompleted: false },
+        { id: 3, name: 'Item Three', isCompleted: true }
       ],
       newItem: ''
     }
@@ -33,7 +33,11 @@ export class Checklist extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    const newItem = { name: this.state.newItem, isCompleted: false }
+    const newItem = {
+      id: generateId(),
+      name: this.state.newItem,
+      isCompleted: false
+    }
     if (!this.state.newItem) return
     this.setState({
       items: addArrayItem(newItem, this.state.items),
