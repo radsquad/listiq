@@ -8,7 +8,7 @@ export const ChecklistAddItemForm = (props) => {
         type='text'
         aria-label='new item title'
         placeholder='item title'
-        value={props.newItem}
+        value={props.newItemTitle}
         onChange={props.handleInputChange}
       />
       <button className='add-item' type='submit'>Add item</button>
@@ -17,7 +17,7 @@ export const ChecklistAddItemForm = (props) => {
 }
 
 ChecklistAddItemForm.propTypes = {
-  newItem: React.PropTypes.string,
+  newItemTitle: React.PropTypes.string,
   handleInputChange: React.PropTypes.func.isRequired,
   handleSubmit: React.PropTypes.func.isRequired
 }

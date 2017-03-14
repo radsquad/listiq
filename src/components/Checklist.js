@@ -5,7 +5,7 @@ import { ChecklistHeader,
          ChecklistItems,
          ChecklistAddItemForm,
          ChecklistFooter } from './'
-import { addArrayItem, generateId } from '../helpers/helpers'
+import { generateId } from '../helpers/common'
 
 export class Checklist extends React.Component {
 
@@ -14,11 +14,11 @@ export class Checklist extends React.Component {
 
     this.state = {
       items: [
-        { id: 1, name: 'Item One', isCompleted: false },
-        { id: 2, name: 'Item Two', isCompleted: false },
-        { id: 3, name: 'Item Three', isCompleted: true }
+        { id: 1, title: 'Item One', isCompleted: false },
+        { id: 2, title: 'Item Two', isCompleted: false },
+        { id: 3, title: 'Item Three', isCompleted: true }
       ],
-      newItem: ''
+      newItemTitle: ''
     }
 
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -27,21 +27,21 @@ export class Checklist extends React.Component {
 
   handleInputChange (e) {
     this.setState({
-      newItem: e.target.value
+      newItemTitle: e.target.value
     })
   }
 
   handleSubmit (e) {
     e.preventDefault()
+    if (!this.state.newItemTitle) return
     const newItem = {
       id: generateId(),
-      name: this.state.newItem,
+      title: this.state.newItemTitle,
       isCompleted: false
     }
-    if (!this.state.newItem) return
     this.setState({
-      items: addArrayItem(newItem, this.state.items),
-      newItem: ''
+      items: [...this.state.items, newItem],
+      newItemTitle: ''
     })
   }
 
@@ -60,7 +60,7 @@ export class Checklist extends React.Component {
           <ChecklistItems items={this.state.items} />
 
           <ChecklistAddItemForm
-            newItem={this.state.newItem}
+            newItemTitle={this.state.newItemTitle}
             handleInputChange={this.handleInputChange}
             handleSubmit={this.handleSubmit}
           />
